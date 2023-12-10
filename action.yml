@@ -1,0 +1,33 @@
+# action.yml
+name: 'Code Review with ChatGPT'
+description: 'Automating code review using ChatGPT with Github Actions integration on PRs for code explanations.'
+inputs:
+  openai_api_key:  # id of input
+    description: 'OpenAI API Key'
+    required: true
+    default: ''
+  github_token:  # id of input
+    description: 'Github API Key'
+    required: true
+    default: ''
+  github_pr_id:  # id of input
+    description: 'Github PR ID'
+    required: true
+    default: ''
+  openai_engine:  # id of input
+    description: 'gtp-3.5-turbo or gpt-4'
+    required: false
+    default: 'gpt-3.5-turbo'
+  mode:  # id of input
+    description: 'How to capture PR changes. Options: files, patch'
+    required: false
+    default: 'files'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.openai_api_key }}
+    - ${{ inputs.github_token }}
+    - ${{ inputs.github_pr_id }}
+    - ${{ inputs.openai_engine }}
+    - ${{ inputs.mode }}
