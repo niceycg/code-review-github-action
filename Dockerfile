@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM public.ecr.aws/docker/library/python:3.8-slim
+FROM python:3.8-slim
 
 # Instalando as dependencias
 COPY requirements.txt .
