@@ -1,6 +1,9 @@
 # Container image that runs your code
 FROM python:3.8-slim
 
+# add +x
+RUN chmod +x entrypoint.sh
+
 # Instalando as dependencias
 COPY requirements.txt .
 RUN pip install -r requirements.txt
